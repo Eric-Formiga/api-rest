@@ -1,7 +1,9 @@
-function sum(a: number,b: number): number {
-   return a + b
-}
+import express  from "express";
 
-const result: number = sum(2,5)
+const PORT = 3333
 
-console.log("O resultado é :" + result)
+const app = express()
+
+app.listen(PORT,()=>{
+   console.log(`Server is running at ${PORT}`);
+})
