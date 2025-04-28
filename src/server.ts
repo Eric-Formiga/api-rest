@@ -7,7 +7,8 @@ const app = express()
 
 app.use(express.json())
 
-//app.use(myMiddleware)
+// se aplica para todas as rotas abaixo
+// //app.use(myMiddleware)
 
 app.get("/products/:id/:user", (request, reponse)=>{
 const { id,user } = request.params 
@@ -15,6 +16,7 @@ reponse.send(`o Id é ${id} e o Usuário é ${user}`)
 
 })
 
+//middleware local/ em uma rota especifica
 app.get("/products", (request, reponse)=>{
    ///products?page=1&limit=10
    const { page, limit } = request.query
@@ -22,7 +24,7 @@ app.get("/products", (request, reponse)=>{
    
 })
 
-app.post("/products", (request, reponse)=>{
+app.post("/products", myMiddleware, (request, reponse)=>{
    const { name,lastName } = request.body
  //  reponse.send(`Nome completo:${name} ${lastName} `)
    response.status(200).json({name, lastName})
