@@ -18,8 +18,14 @@ index(request: Request, response: Response){
 create(request: Request, response: Response){
     const { name, lastName } = request.body
     if(!name){
-        throw new AppError("O Nome é obrigátorio!", 400)
+        throw new AppError("O Name é obrigátorio!", 400)
     }
+
+    if(!lastName){
+        throw new AppError("O LastName é obrigátorio!", 400)
+    }
+
+
     response.status(201).json({ name, lastName, user_id: request.user_id })
 }
 
