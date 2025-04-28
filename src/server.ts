@@ -1,4 +1,4 @@
-import express  from "express";
+import express, { response }  from "express";
 
 const PORT = 3333
 
@@ -21,8 +21,8 @@ app.get("/products", (request, reponse)=>{
 
 app.post("/products", (request, reponse)=>{
    const { name,lastName } = request.body
-   reponse.send(`Nome completo:${name} ${lastName} `)
-   
+ //  reponse.send(`Nome completo:${name} ${lastName} `)
+   response.status(200).json({name, lastName})
    })
 app.listen(PORT,()=>{
    console.log(`Server is running at ${PORT}`);
