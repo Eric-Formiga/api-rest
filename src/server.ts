@@ -1,10 +1,13 @@
 import express, { response }  from "express";
+import { myMiddleware } from "./middlewares/my-middleware";
 
 const PORT = 3333
 
 const app = express()
 
 app.use(express.json())
+
+//app.use(myMiddleware)
 
 app.get("/products/:id/:user", (request, reponse)=>{
 const { id,user } = request.params 
