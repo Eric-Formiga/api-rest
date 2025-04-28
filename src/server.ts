@@ -4,8 +4,9 @@ const PORT = 3333
 
 const app = express()
 
-app.get("/", (request, reponse)=>{
-reponse.send("Hello World")
+app.get("/products/:id/:user", (request, reponse)=>{
+const { id,user } = request.params 
+reponse.send(`o Id é ${id} e o Usuário é ${user}`)
 })
 
 app.listen(PORT,()=>{
