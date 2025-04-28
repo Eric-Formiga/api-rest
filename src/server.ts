@@ -1,14 +1,23 @@
-import express  from "express";
-
+import express, { Request, Response, NextFunction } from "express";
 import { routes } from "./routes";
-const PORT = 3333
+import { AppError } from "./utils/AppError";
 
-const app = express()
+const PORT = 3333;
 
-app.use(express.json())
+const app = express();
 
-app.use(routes)
+app.use(express.json());
 
-app.listen(PORT,()=>{
-   console.log(`Server is running at ${PORT}`);
-})
+app.use(routes);
+
+app.use((error: any, request: Request, response: Response, _: NextFunction) => {
+    if (error instanceof AppError) {
+        return response.status(error.statusCode).json({ message: error.message });
+    }
+
+    response.status(500).json({ message: error.message });
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running at ${PORT}`);
+});
