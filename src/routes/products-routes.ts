@@ -10,11 +10,11 @@ const productsController = new ProductsController()
 // se aplica para todas as rotas abaixo
 // //app.use(myMiddleware)
 
-productsRoutes.get("/:id/:user", (request, response) => {
-    const { id, user } = request.params
-    response.send(`o Id é ${id} e o Usuário é ${user}`)
+// productsRoutes.get("/:id/:user", (request, response) => {
+//     const { id, user } = request.params
+//     response.send(`o Id é ${id} e o Usuário é ${user}`)
 
-})
+// })
 
 //middleware local/ em uma rota especifica
 productsRoutes.get("/",productsController.index
