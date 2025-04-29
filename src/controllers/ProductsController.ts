@@ -19,7 +19,7 @@ class ProductsController {
     create(request: Request, response: Response) {
        
         const bodySchema = z.object({
-            name: z.string({required_error: "Name is Required"}).min(6,{message:"Name Must be 6 or More Characters" }),
+            name: z.string({required_error: "Name is Required"}).min(6,{message:"Name Must be 6 or More Characters" }).trim(),
             lastName: z.string({required_error: "lastName is Required"})
         })
 
